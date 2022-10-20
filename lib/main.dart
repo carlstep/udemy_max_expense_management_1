@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import './widgets/transaction_list.dart';
+import './widgets/new_transaction.dart';
+import './widgets/user_transations.dart';
+import './models/transaction.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,66 +18,88 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  // String? titleInput;
-  // String? amountInput;
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
 
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
+class _MyHomePageState extends State<MyHomePage> {
+  final List<Transaction> _userTransaction = [
+    Transaction(
+      id: 't1',
+      title: 'breakfast',
+      amount: 9.50,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't2',
+      title: 'bus trip',
+      amount: 17.50,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't3',
+      title: 'NZ Flight',
+      amount: 1283.50,
+      date: DateTime.now(),
+    ),
+  ];
+
+  void _addNewTransaction(String txTitle, double txAmount) {
+    final newTx = Transaction(
+      id: DateTime.now().toString(),
+      title: txTitle,
+      amount: txAmount,
+      date: DateTime.now(),
+    );
+
+    setState(() {
+      _userTransaction.add(newTx);
+    });
+  }
+
+  void startAddNewTransaction(BuildContext ctx) {
+    showModalBottomSheet(
+        context: ctx,
+        builder: (bCtx) {
+          return NewTransaction();
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.add,
+              ))
+        ],
         title: Text('Xpnc'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            width: double.infinity,
-            child: Card(
-              color: Colors.lightBlue[200],
-              elevation: 5,
-              child: Text('CHART'),
-            ),
-          ),
-          Card(
-            child: Container(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  TextField(
-                    decoration: InputDecoration(labelText: 'title'),
-                    controller: titleController,
-                    //onChanged: (value) => titleInput = value;
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextField(
-                    controller: amountController,
-                    decoration: InputDecoration(labelText: 'amount'),
-                    //onChanged: (value) => amountInput = value,
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      print(titleController.text);
-                      print(amountController.text);
-                    },
-                    style: ButtonStyle(
-                        foregroundColor:
-                            MaterialStateProperty.all(Colors.purple)),
-                    child: Text('Confirm'),
-                  ),
-                ],
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              width: double.infinity,
+              child: Card(
+                color: Colors.lightBlue[200],
+                elevation: 5,
+                child: Text('CHART'),
               ),
             ),
-          ),
-          TransactionList(),
-        ],
+            UserTransactions(),
+          ],
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
       ),
     );
   }
