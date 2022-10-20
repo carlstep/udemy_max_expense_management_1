@@ -39,6 +39,12 @@ class MyHomePage extends StatelessWidget {
     ),
   ];
 
+  // String? titleInput;
+  // String? amountInput;
+
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +52,8 @@ class MyHomePage extends StatelessWidget {
           title: Text('Xpnc'),
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
               width: double.infinity,
@@ -54,6 +61,39 @@ class MyHomePage extends StatelessWidget {
                 color: Colors.lightBlue[200],
                 elevation: 5,
                 child: Text('CHART'),
+              ),
+            ),
+            Card(
+              child: Container(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    TextField(
+                      decoration: InputDecoration(labelText: 'title'),
+                      controller: titleController,
+                      //onChanged: (value) => titleInput = value;
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    TextField(
+                      controller: amountController,
+                      decoration: InputDecoration(labelText: 'amount'),
+                      //onChanged: (value) => amountInput = value,
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        print(titleController.text);
+                        print(amountController.text);
+                      },
+                      style: ButtonStyle(
+                          foregroundColor:
+                              MaterialStateProperty.all(Colors.purple)),
+                      child: Text('Confirm'),
+                    ),
+                  ],
+                ),
               ),
             ),
             Column(
