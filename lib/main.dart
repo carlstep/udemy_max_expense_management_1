@@ -13,6 +13,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        colorScheme: Theme.of(context).colorScheme.copyWith(
+              primary: Colors.indigo,
+              secondary: Colors.yellow,
+            ),
+        cardColor: Colors.grey[300],
+      ),
       title: 'Flutter Expense Management App',
       home: MyHomePage(),
     );
@@ -103,7 +110,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
+        foregroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+        child: const Icon(
+          Icons.add,
+        ),
         onPressed: () => _startAddNewTransaction(context),
       ),
     );
