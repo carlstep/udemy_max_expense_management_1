@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:udemy_max_expense_management_1/widgets/transaction_list.dart';
 
@@ -19,6 +21,22 @@ class MyApp extends StatelessWidget {
               secondary: Colors.yellow,
             ),
         cardColor: Colors.grey[300],
+        fontFamily: 'QuickSand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              headline6: TextStyle(
+                fontFamily: 'OpenSans',
+                //fontSize: 12,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
+        appBarTheme: const AppBarTheme(
+          titleTextStyle: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 5,
+          ),
+        ),
       ),
       title: 'Flutter Expense Management App',
       home: MyHomePage(),
