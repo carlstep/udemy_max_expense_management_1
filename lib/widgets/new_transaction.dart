@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 
-class NewTransaction extends StatelessWidget {
+class NewTransaction extends StatefulWidget {
   final Function addTx;
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
 
   NewTransaction(this.addTx);
+
+  @override
+  State<NewTransaction> createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
 
   void submitData() {
     final enteredTitle = titleController.text;
@@ -15,27 +21,29 @@ class NewTransaction extends StatelessWidget {
       return;
     }
 
-    addTx(
+    widget.addTx(
       enteredTitle,
       enteredAmount,
     );
+
+    Navigator.of(context).pop();
   }
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             TextField(
-              decoration: InputDecoration(labelText: 'title'),
+              decoration: const InputDecoration(labelText: 'title'),
               controller: titleController,
               onSubmitted: (_) => submitData(),
               //onChanged: (value) => titleInput = value;
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             TextField(
@@ -47,13 +55,13 @@ class NewTransaction extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                submitData;
+                submitData();
                 print(titleController.text);
                 print(amountController.text);
               },
               style: ButtonStyle(
                   foregroundColor: MaterialStateProperty.all(Colors.purple)),
-              child: Text('Confirm'),
+              child: const Text('Confirm'),
             ),
           ],
         ),

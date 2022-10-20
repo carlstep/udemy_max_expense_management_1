@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (bCtx) {
           return GestureDetector(
             onTap: () {},
-            behavior: HitTestBehavior.opaque,
+            //behavior: HitTestBehavior.opaque,
             child: NewTransaction(_addNewTransaction),
           );
         });
@@ -78,11 +78,11 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: [
           IconButton(
               onPressed: () => _startAddNewTransaction(context),
-              icon: Icon(
+              icon: const Icon(
                 Icons.add,
               ))
         ],
-        title: Text('Xpnc'),
+        title: const Text('Xpnc'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Card(
                 color: Colors.lightBlue[200],
                 elevation: 5,
-                child: Text('CHART'),
+                child: const Text('CHART'),
               ),
             ),
             TransactionList(_userTransaction),
@@ -103,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () => _startAddNewTransaction(context),
       ),
     );
