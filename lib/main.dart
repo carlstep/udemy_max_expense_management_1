@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:udemy_max_expense_management_1/widgets/transaction_list.dart';
 
 import './widgets/new_transaction.dart';
-import './widgets/user_transations.dart';
+import './widgets/transaction_list.dart';
 import './models/transaction.dart';
 
 void main() {
@@ -58,11 +59,15 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void startAddNewTransaction(BuildContext ctx) {
+  void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
         context: ctx,
         builder: (bCtx) {
-          return NewTransaction();
+          return GestureDetector(
+            onTap: () {},
+            behavior: HitTestBehavior.opaque,
+            child: NewTransaction(_addNewTransaction),
+          );
         });
   }
 
@@ -72,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () => _startAddNewTransaction(context),
               icon: Icon(
                 Icons.add,
               ))
@@ -92,14 +97,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text('CHART'),
               ),
             ),
-            UserTransactions(),
+            TransactionList(_userTransaction),
           ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () => _startAddNewTransaction(context),
       ),
     );
   }
