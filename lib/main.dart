@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
               primary: Colors.indigo,
               secondary: Colors.yellow,
             ),
-        cardColor: Colors.grey[300],
+        cardColor: Colors.grey[200],
         fontFamily: 'QuickSand',
         textTheme: ThemeData.light().textTheme.copyWith(
               headline6: TextStyle(
@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
                 //fontSize: 12,
                 fontWeight: FontWeight.normal,
               ),
+              button: TextStyle(color: Colors.white),
             ),
         appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
