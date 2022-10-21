@@ -48,7 +48,8 @@ class _NewTransactionState extends State<NewTransaction> {
             ),
             TextField(
               controller: amountController,
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: true),
               onSubmitted: (_) => submitData(),
               decoration: const InputDecoration(labelText: 'amount'),
               //onChanged: (value) => amountInput = value,
