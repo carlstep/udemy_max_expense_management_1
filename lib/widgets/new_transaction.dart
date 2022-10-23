@@ -68,7 +68,8 @@ class _NewTransactionState extends State<NewTransaction> {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all(Colors.purple),
+                      foregroundColor: MaterialStateProperty.all(
+                          Theme.of(context).colorScheme.secondary),
                     ),
                   ),
                 ],
@@ -77,7 +78,8 @@ class _NewTransactionState extends State<NewTransaction> {
             ElevatedButton(
               child: Text(
                 'CONFIRM',
-                style: TextStyle(color: Colors.white),
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
               onPressed: () {
                 submitData();
@@ -85,7 +87,8 @@ class _NewTransactionState extends State<NewTransaction> {
                 print(amountController.text);
               },
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.purple),
+                backgroundColor: MaterialStateProperty.all(
+                    Theme.of(context).colorScheme.secondary),
               ),
             )
           ],
