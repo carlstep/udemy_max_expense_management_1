@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Transaction(
       id: 't3',
       title: 'NZ Flight',
-      amount: 1283.50,
+      amount: 283.50,
       date: DateTime.now(),
     ),
   ];
@@ -81,12 +81,13 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  void _addNewTransaction(String txTitle, double txAmount) {
+  void _addNewTransaction(
+      String txTitle, double txAmount, DateTime chosenDate) {
     final newTx = Transaction(
       id: DateTime.now().toString(),
       title: txTitle,
       amount: txAmount,
-      date: DateTime.now(),
+      date: chosenDate,
     );
 
     setState(() {
