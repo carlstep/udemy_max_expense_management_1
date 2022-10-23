@@ -17,17 +17,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: Theme.of(context).colorScheme.copyWith(
               primary: Colors.indigo,
-              secondary: Colors.yellow,
+              secondary: Colors.purple,
             ),
         cardColor: Colors.grey[200],
         fontFamily: 'QuickSand',
         textTheme: ThemeData.light().textTheme.copyWith(
-              headline6: TextStyle(
+              headline6: const TextStyle(
                 fontFamily: 'OpenSans',
                 //fontSize: 12,
                 fontWeight: FontWeight.normal,
               ),
-              button: TextStyle(color: Colors.white),
+              button: const TextStyle(color: Colors.white),
             ),
         appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
@@ -131,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        foregroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Colors.white,
         backgroundColor: Theme.of(context).colorScheme.secondary,
         child: const Icon(
           Icons.add,
